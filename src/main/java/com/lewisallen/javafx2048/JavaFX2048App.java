@@ -16,7 +16,7 @@ public class JavaFX2048App extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml_example.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("JavaFX2048.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root, 300, 275);
