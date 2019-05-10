@@ -62,12 +62,102 @@ public class GameModel
         return score;
     }
 
+    /**
+     * Sets score to zero, resets board and generates two random tiles.
+     */
     public void resetGame()
     {
         setScore(0);
         Arrays.stream(tiles).forEach((y) -> Arrays.stream(y).forEach((x) -> x.setValue(0)));
         createNewTile(tiles);
         createNewTile(tiles);
+    }
+
+    public void move(Move move)
+    {
+        System.out.println("Moving " + move);
+
+        boolean moved = false; // Did anything actually move on input.
+
+        switch(move)
+        {
+            case LEFT:
+                for(int y = 0; y < tiles.length; y++)
+                {
+                    for(int x = 0; x < tiles[y].length - 1; x++)
+                    {
+                        for(int z = x + 1; z < tiles[y].length; z++)
+                        {
+                            if(tiles[y][x].get() != 0 && tiles[y][z].get() != 0 && tiles[y][x].get() != tiles[y][z].get())
+                            {
+                                break;
+                            }
+
+                            if(tiles[y][x].get() == 0 && tiles[y][z].get() != 0)
+                            {
+                                tiles[y][x].set(tiles[y][z].get());
+                                tiles[y][z].set(0);
+                                moved = true;
+                            }
+
+                            if(tiles[y][x].get() == tiles[y][z].get() && tiles[y][x].get() != 0)
+                            {
+                                tiles[y][x].set(tiles[y][x].get() + tiles[y][z].get());
+                                tiles[y][z].set(0);
+                                score.set(score.getValue() + tiles[y][x].get());
+                                moved = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+
+            case RIGHT:
+                // This matches the LEFT logic exactly, just different loop counters.
+                // ToDo: Breakout into method.
+                for(int y = 0; y < tiles.length; y++)
+                {
+                    for(int x = tiles.length - 1; x > 0; x--)
+                    {
+                        for(int z = x - 1; z >= 0; z--)
+                        {
+                            if(tiles[y][x].get() != 0 && tiles[y][z].get() != 0 && tiles[y][x].get() != tiles[y][z].get())
+                            {
+                                break;
+                            }
+
+                            if(tiles[y][x].get() == 0 && tiles[y][z].get() != 0)
+                            {
+                                tiles[y][x].set(tiles[y][z].get());
+                                tiles[y][z].set(0);
+                                moved = true;
+                            }
+
+                            if(tiles[y][x].get() == tiles[y][z].get() && tiles[y][x].get() != 0)
+                            {
+                                tiles[y][x].set(tiles[y][x].get() + tiles[y][z].get());
+                                tiles[y][z].set(0);
+                                score.set(score.getValue() + tiles[y][x].get());
+                                moved = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+
+            case DOWN:
+                // ToDo: Transpose matrix then move accordingly.
+                break;
+
+            case UP:
+                // ToDo: See above.
+                break;
+        }
+
+        if(moved)
+            createNewTile(tiles);
     }
 
     /**
@@ -92,34 +182,20 @@ public class GameModel
         tile.set(getNewTileValue());
     }
 
+    /**
+     * Gets a random value for a new tile.
+     * @return value for tile.
+     */
     private int getNewTileValue()
     {
         Random r = new Random();
         return r.nextInt(100) < 10 ? 4 : 2;
     }
 
-    public void moveUp()
-    {
-        System.out.println("Moving" + new Throwable().getStackTrace()[0].getMethodName());
-    }
-
-    public void moveRight()
-    {
-        System.out.println("Moving" + new Throwable().getStackTrace()[0].getMethodName());
-    }
-
-    public void moveDown()
-    {
-        System.out.println("Moving" + new Throwable().getStackTrace()[0].getMethodName());
-    }
-
-    public void moveLeft()
-    {
-        System.out.println("Moving" + new Throwable().getStackTrace()[0].getMethodName());
-    }
-
+    /**
+     * Check whether the game is over.
+     */
     private void checkForLoss()
     {
-
     }
 }

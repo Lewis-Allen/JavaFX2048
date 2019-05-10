@@ -24,7 +24,7 @@ public class JavaFX2048App extends Application
         GameController controller = loader.getController();
         controller.setupInputs(scene);
 
-        stage.setTitle("FXML Welcome");
+        stage.setTitle("2048");
         stage.setScene(scene);
         stage.show();
     }

@@ -73,20 +73,20 @@ public class GameController
             inputManager.keyPressed(keyCode);
             if (inputManager.isPressed(KeyCode.UP))
             {
-                model.moveUp();
+                model.move(Move.UP);
                 return;
             }
             if (inputManager.isPressed(KeyCode.RIGHT))
             {
-                model.moveRight();
+                model.move(Move.RIGHT);
                 return;
             }
             if (inputManager.isPressed(KeyCode.DOWN)) {
-                model.moveDown();
+                model.move(Move.DOWN);
                 return;
             }
             if (inputManager.isPressed(KeyCode.LEFT)) {
-                model.moveLeft();
+                model.move(Move.LEFT);
                 return;
             }
         });
