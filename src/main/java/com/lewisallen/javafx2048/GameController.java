@@ -2,26 +2,33 @@ package com.lewisallen.javafx2048;
 
 import com.lewisallen.javafx2048.input.InputManager;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class GameController
 {
     @FXML
-    private VBox container;
-
-    @FXML
-    private Button testButton;
-
-    @FXML
     private Label score;
 
     @FXML
+    private Label highScore;
+
+    @FXML
     private Button reset;
+
+    @FXML
+    private GridPane grid;
+
+    @FXML
+    private Label gameOver;
 
     private GameModel model;
     private InputManager inputManager;
@@ -35,34 +42,39 @@ public class GameController
     @FXML
     public void initialize()
     {
-        // Create a button for testing purposes.
-        testButton.setOnAction(e ->
-        {
-            model.setTileValue(1,0,0);
-            System.out.println(model.getTileValue(0,0));
-            model.setTileValue(2, 1, 0);
-            model.setTileValue(3, 2, 0);
-            model.setTileValue(4, 3, 0);
-            model.setScore(model.getScore() + 1);
-        });
+//        // Create a button for testing purposes.
+//        testButton.setOnAction(e ->
+//        {
+//            model.setTileValue(1,0,0);
+//            System.out.println(model.getTileValue(0,0));
+//            model.setTileValue(2, 1, 0);
+//            model.setTileValue(3, 2, 0);
+//            model.setTileValue(4, 3, 0);
+//            model.setScore(model.getScore() + 1);
+//        });
 
         // Reset Button
         reset.setOnAction((e) -> model.resetGame());
 
-        // Bind score
+        // Bind scores
         score.textProperty().bind(model.getScoreProperty().asString());
+        highScore.textProperty().bind(model.getHighScoreProperty().asString());
+
+        // Bind game over
+        gameOver.textProperty().bind(model.isGameOverProperty().asString());
+
+        Font arial = new Font("Arial", 30);
 
         // Add in values to map to array.
         for(int y = 0; y < 4; y++)
         {
-            HBox hbox = new HBox();
             for(int x = 0; x < 4; x++)
             {
                 Label label = new Label();
+                label.setFont(arial);
                 label.textProperty().bind(model.getTileProperty(x,y).asString());
-                hbox.getChildren().add(label);
+                grid.add(label, x, y);
             }
-            container.getChildren().add(hbox);
         }
     }
 

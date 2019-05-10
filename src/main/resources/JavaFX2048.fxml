@@ -6,17 +6,45 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.lewisallen.javafx2048.GameController"
-            prefHeight="400.0" prefWidth="600.0">
-    <VBox fx:id="container">
+            prefHeight="600"
+            prefWidth="600">
+    <VBox fillWidth="true" fx:id="container" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0">
         <HBox>
+            <Label>
+                <font>
+                    <Font name="Arial" size="20" />
+                </font>
+                Score:
+            </Label>
+            <Label fx:id="score">
+                <font>
+                    <Font name="Arial" size="20" />
+                </font>
+            </Label>
+            <Label>
+                <font>
+                    <Font name="Arial" size="20" />
+                </font>
+                High Score:
+            </Label>
+            <Label fx:id="highScore">
+                <font>
+                    <Font name="Arial" size="20" />
+                </font>
+            </Label>
             <Button fx:id="reset">Restart</Button>
-            <Label>Score:</Label>
-            <Label fx:id="score"></Label>
         </HBox>
-        <Button fx:id="testButton">Test</Button>
+        <GridPane fx:id="grid" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0" gridLinesVisible="true" vgap="10" hgap="10" VBox.vgrow="ALWAYS">
+
+        </GridPane>
+        <Label fx:id="gameOver">
+            <font>
+                <Font name="Arial" size="20" />
+            </font>
+        </Label>
     </VBox>
 </AnchorPane>
-
