@@ -1,0 +1,33 @@
+.headerContainer {
+    -fx-padding: 10px;
+}
+
+.headerLabel {
+    -fx-font: 20px "Arial";
+    -fx-text-fill: #212121;
+}
+
+.grid {
+    -fx-pref-width: 430px;
+    -fx-pref-height: 430px;
+    -fx-background-color: #BBDEFB;
+    -fx-border-color: #212121;
+
+}
+
+.gridLabel {
+    -fx-font: 30px "Arial";
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-text-fill: #212121;
+}
+
+.background {
+    -fx-background-color: #FFFFFF;
+}
+
+.gameoverLabel {
+    -fx-padding: 10px;
+    -fx-text-fill: #FF5722;
+    -fx-font: 30px "Arial";
+}

@@ -13,6 +13,7 @@ public class InputManager
     /**
      * Sets a key as pressed.
      * Sets key as held if key has not been released since last pressed.
+     *
      * @param keyCode KeyCode of the key pressed.
      */
     public void keyPressed(KeyCode keyCode)
@@ -36,6 +37,7 @@ public class InputManager
 
     /**
      * Sets a key as not pressed.
+     *
      * @param keyCode Key code of the key pressed.
      */
     public void keyReleased(KeyCode keyCode)
@@ -48,6 +50,7 @@ public class InputManager
      * Getter for whether a key is pressed.
      * Takes into account when a key is being held.
      * Held keys return as not pressed.
+     *
      * @param keyCode Key code of the key to check.
      * @return Whether the key is pressed.
      */

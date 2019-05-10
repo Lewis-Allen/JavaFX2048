@@ -1,50 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.lewisallen.javafx2048.GameController"
-            prefHeight="600"
-            prefWidth="600">
-    <VBox fillWidth="true" fx:id="container" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0">
-        <HBox>
-            <Label>
-                <font>
-                    <Font name="Arial" size="20" />
-                </font>
-                Score:
-            </Label>
-            <Label fx:id="score">
-                <font>
-                    <Font name="Arial" size="20" />
-                </font>
-            </Label>
-            <Label>
-                <font>
-                    <Font name="Arial" size="20" />
-                </font>
-                High Score:
-            </Label>
-            <Label fx:id="highScore">
-                <font>
-                    <Font name="Arial" size="20" />
-                </font>
-            </Label>
-            <Button fx:id="reset">Restart</Button>
-        </HBox>
-        <GridPane fx:id="grid" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0" gridLinesVisible="true" vgap="10" hgap="10" VBox.vgrow="ALWAYS">
-
-        </GridPane>
-        <Label fx:id="gameOver">
-            <font>
-                <Font name="Arial" size="20" />
-            </font>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:id="container"
+      xmlns="http://javafx.com/javafx"
+      fx:controller="com.lewisallen.javafx2048.GameController"
+      styleClass="background">
+    <HBox spacing="10" styleClass="headerContainer">
+        <Label styleClass="headerLabel">
+            Score:
         </Label>
-    </VBox>
-</AnchorPane>
+        <Label styleClass="headerLabel" fx:id="score"/>
+        <Label styleClass="headerLabel">
+            High Score:
+        </Label>
+        <Label styleClass="headerLabel" fx:id="highScore">
+        </Label>
+        <Button fx:id="reset">Restart</Button>
+    </HBox>
+    <GridPane fx:id="grid"
+              vgap="10" hgap="10"
+              styleClass="grid">
+
+    </GridPane>
+    <Label styleClass="gameoverLabel" fx:id="gameOver"/>
+</VBox>

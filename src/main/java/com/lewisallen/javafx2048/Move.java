@@ -1,6 +1,7 @@
 package com.lewisallen.javafx2048;
 
-public enum Move {
+public enum Move
+{
     UP, RIGHT, DOWN, LEFT;
 }
 

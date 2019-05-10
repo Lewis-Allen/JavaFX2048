@@ -19,7 +19,8 @@ public class JavaFX2048App extends Application
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("JavaFX2048.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root, 430, 540);
+        scene.getStylesheets().add("JavaFX2048.css");
 
         GameController controller = loader.getController();
         controller.setupInputs(scene);
