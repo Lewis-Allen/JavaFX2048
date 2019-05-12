@@ -4,10 +4,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:id="container"
+<VBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
       fx:controller="com.lewisallen.javafx2048.GameController"
-      styleClass="background">
+      styleClass="background"
+      stylesheets="JavaFX2048.css">
     <HBox spacing="10" styleClass="headerContainer">
         <Label styleClass="headerLabel">
             Score:
@@ -16,14 +17,11 @@
         <Label styleClass="headerLabel">
             High Score:
         </Label>
-        <Label styleClass="headerLabel" fx:id="highScore">
-        </Label>
+        <Label styleClass="headerLabel" fx:id="highScore"/>
         <Button fx:id="reset">Restart</Button>
     </HBox>
     <GridPane fx:id="grid"
               vgap="10" hgap="10"
-              styleClass="grid">
-
-    </GridPane>
+              styleClass="grid"/>
     <Label styleClass="gameoverLabel" fx:id="gameOver"/>
 </VBox>

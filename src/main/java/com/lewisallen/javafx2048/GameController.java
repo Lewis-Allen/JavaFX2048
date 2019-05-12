@@ -26,14 +26,8 @@ public class GameController
     @FXML
     private Label gameOver;
 
-    private GameModel model;
-    private InputManager inputManager;
-
-    public GameController()
-    {
-        inputManager = new InputManager();
-        model = new GameModel();
-    }
+    private GameModel model = new GameModel();
+    private InputManager inputManager = new InputManager();
 
     @FXML
     public void initialize()
@@ -42,11 +36,11 @@ public class GameController
         reset.setOnAction((e) -> model.resetGame());
 
         // Bind scores
-        score.textProperty().bind(model.getScoreProperty().asString());
-        highScore.textProperty().bind(model.getHighScoreProperty().asString());
+        score.textProperty().bind(model.scoreProperty().asString());
+        highScore.textProperty().bind(model.highScoreProperty().asString());
 
         // Bind game over
-        gameOver.textProperty().bind(Bindings.when(model.isGameOverProperty())
+        gameOver.textProperty().bind(Bindings.when(model.gameOverProperty())
                 .then("Game Over")
                 .otherwise(""));
 
@@ -60,6 +54,11 @@ public class GameController
         }
     }
 
+    /**
+     * Setup inputs for the game.
+     *
+     * @param scene The scene the game is drawn on.
+     */
     public void setupInputs(Scene scene)
     {
         scene.setOnKeyPressed(key ->
@@ -69,22 +68,18 @@ public class GameController
             if (inputManager.isPressed(KeyCode.UP))
             {
                 model.move(Move.UP);
-                return;
             }
-            if (inputManager.isPressed(KeyCode.RIGHT))
+            else if (inputManager.isPressed(KeyCode.RIGHT))
             {
                 model.move(Move.RIGHT);
-                return;
             }
-            if (inputManager.isPressed(KeyCode.DOWN))
+            else if (inputManager.isPressed(KeyCode.DOWN))
             {
                 model.move(Move.DOWN);
-                return;
             }
-            if (inputManager.isPressed(KeyCode.LEFT))
+            else if (inputManager.isPressed(KeyCode.LEFT))
             {
                 model.move(Move.LEFT);
-                return;
             }
         });
 
